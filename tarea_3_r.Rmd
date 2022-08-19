@@ -1,0 +1,111 @@
+
+TAREA_3
+para leer archivos csv, es importante tener la librerai readr, la cual la podemos isntalar desde "Tools/install packages"
+para ubicar los archivos en la computadora, podemos utilizar file.choose()
+
+```{r}
+file.choose()
+
+
+```
+```{r}
+archivo_csv="C:\\Users\\Herba\\Documents\\GitHub\\TAREA_3\\primary_results.csv"
+```
+
+```{r}
+archivo_csv
+```
+
+```{r}
+gapminder=read.csv(archivo_csv)
+```
+
+
+```{r}
+head(gapminder)
+```
+```{r}
+library("dplyr")
+```
+
+
+
+
+
+```{r}
+gapminder %>%
+  filter(state=="Florida")
+
+
+```
+```{r}
+dataset_results=gapminder
+```
+1.
+```{r}
+dataset_results%>%
+  filter(state=="Florida")
+```
+
+2. 
+
+2.1
+```{r}
+dataset_results%>%
+  filter(candidate=="Hillary Clinton" | candidate=="Donald Trump")
+```
+2.2
+```{r}
+dataset_results %>%
+  filter(county=="Shelby" & party=="Democrat")
+```
+2.3
+```{r}
+
+dataset_results %>%
+  filter(state=="Alabama" & votes>=15000)
+
+
+```
+3.
+
+```{r}
+dataset_results %>%
+  filter(state=="Texas" & county=="Denton")%>%
+  select(state, county,party,candidate,votes)%>%
+  arrange(votes)
+
+
+
+
+```
+
+
+
+4.
+
+
+```{r}
+dataset_results %>%
+  filter(state=="Alaska" & candidate=="Ted Cruz") %>%
+ mutate(vote_count=votes/fraction_votes) %>%
+ arrange(vote_count)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
